@@ -65,12 +65,24 @@ pub fn main() !void {
 
     const command = res.positionals[0] orelse return error.MissingCommand;
     switch (command) {
-        .help => std.debug.print("--help\n", .{}),
-        .version => std.debug.print("Quick Ignore. Version 0.1 beta.\n", .{}),
+        .help =>  try commandHelp(res),
+        .version => try commandVersion(res),
         .add =>  try commandAdd(allocator, &it, res),
         .remove =>  try commandRemove(allocator, &it, res),
         .list => try commandList(allocator, &it, res),
     }
+}
+
+fn commandHelp(main_args: MainArgs) !void {
+    _ = main_args;
+
+    std.debug.print("--help\n", .{});
+}
+
+fn commandVersion(main_args: MainArgs) !void {
+    _ = main_args;
+
+    std.debug.print("Quick Ignore. Version 0.1 beta.\n", .{});
 }
 
 fn commandAdd(allocator: std.mem.Allocator, it: *std.process.ArgIterator, main_args: MainArgs) !void {
