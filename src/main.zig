@@ -15,9 +15,9 @@ const clap = @import("clap");
 const SubCommands = enum {
     help,
     version,
-    list,
     add,
     remove,
+    list,
 };
 
 const main_parsers = .{
@@ -69,7 +69,7 @@ pub fn main() !void {
         .version => std.debug.print("Quick Ignore. Version 0.1 beta.\n", .{}),
         .add =>  try commandAdd(allocator, &it, res),
         .remove =>  try commandRemove(allocator, &it, res),
-        .list => try listMain(allocator, &it, res)
+        .list => try commandList(allocator, &it, res),
     }
 }
 
@@ -131,7 +131,7 @@ fn commandRemove(allocator: std.mem.Allocator, it: *std.process.ArgIterator, mai
     }
 }
 
-fn listMain(allocator: std.mem.Allocator, it: *std.process.ArgIterator, main_args: MainArgs) !void {
+fn commandList(allocator: std.mem.Allocator, it: *std.process.ArgIterator, main_args: MainArgs) !void {
     _ = main_args;
 
     const params = comptime clap.parseParamsComptime(
