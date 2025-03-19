@@ -7,6 +7,7 @@ pub const main_parsers = .{
 };
 
 pub const main_params = clap.parseParamsComptime(
+    \\-g, --global  Add ignores to global ignore file.
     \\<command>
     \\
 );

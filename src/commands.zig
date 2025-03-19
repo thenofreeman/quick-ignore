@@ -20,7 +20,7 @@ pub fn add(allocator: std.mem.Allocator, it: *std.process.ArgIterator, main_args
 
     const params = comptime clap.parseParamsComptime(
         \\-t, --template <str>...  Ingore using a template.
-        \\<str>...                 Ignore specific paths
+        \\<str>...                 Ignore specific paths.
     );
 
     var diagnostic = clap.Diagnostic{};
@@ -49,7 +49,7 @@ pub fn remove(allocator: std.mem.Allocator, it: *std.process.ArgIterator, main_a
 
     const params = comptime clap.parseParamsComptime(
         \\-t, --template <str>...  Un-Ingore using a template.
-        \\<str>...                 Un-Ignore specific paths
+        \\<str>...                 Un-Ignore specific paths.
     );
 
     var diagnostic = clap.Diagnostic{};
