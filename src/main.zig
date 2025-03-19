@@ -44,10 +44,10 @@ pub fn main() !void {
 
     const command = res.positionals[0] orelse return error.MissingCommand;
     switch (command) {
-        .help =>  try Commands.help(res),
+        .help => try Commands.help(res),
         .version => try Commands.version(res),
         .add =>  try Commands.add(allocator, &it, res),
-        .remove =>  try Commands.remove(allocator, &it, res),
+        .remove => try Commands.remove(allocator, &it, res),
         .list => try Commands.list(allocator, &it, res),
     }
 }
